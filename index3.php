@@ -32,7 +32,7 @@ class Solution
     public function romanToInt($s)
     {
         // 先建立一個陣列，把羅馬數字對應的數字放進去
-        $num =[
+        $num = [
             'I' => 1,
             'V' => 5,
             'X' => 10,
@@ -43,52 +43,39 @@ class Solution
         ];
         $total = 0;
         // 算出字串長度。
-        $a=str_split($s);
+        $a = str_split($s);
+        $array = count($a);
         print_r($a);
-        foreach($a as $key => $value)
-        {
-            // 要是c的話，就要判斷右邊是不是d或者m，是的話就要減。
-            if($value=="C"||$value=="X"||$value=="I")
-            {
-                if($a[$key+1]=="D" || $a[$key+1]=="M")
-                {
-                    $total += $num[$a[$key+1]] - $num[$value];
-                    $key = $key+1;       
+        for ($key = 0; $key < $array; $key++) {
+            if ($key < $array - 1) {
+                // 要是c的話，就要判斷右邊是不是d或者m，是的話就要減。
+                if ($a[$key] == "C" || $a[$key] == "X" || $a[$key] == "I") {
+                    if ($a[$key + 1] == "D" || $a[$key + 1] == "M") {
+                        $total += $num[$a[$key + 1]] - $num[$a[$key]];
+                        $key = $key + 1;
+                    } elseif ($a[$key + 1] == "L" || $a[$key + 1] == "C") {
+                        $total += $num[$a[$key + 1]] - $num[$a[$key]];
+                        $key = $key + 1;
+                    } elseif ($a[$key + 1] == "V" || $a[$key + 1] == "X") {
+                        $total += $num[$a[$key + 1]] - $num[$a[$key]];
+                        $key = $key + 1;
+                    } else {
+                        $total += $num[$a[$key]];
+                    }
+                } else {
+                    $total += $num[$a[$key]];
                 }
-                elseif($value=="C")
-                {
-                    $total += $num[$value];
-                }
-                elseif($key+1=="L" || $key+1=="C")
-                {
-                    $total += $num[$a[$key+1]] - $num[$value];
-                    $key = $key+1;       
-                }
-                elseif($value=="X")
-                {
-                    $total += $num[$value];
-                }elseif($key+1=="V" || $key+1=="X")
-                {
-                    $total += $num[$a[$key+1]] - $num[$value];
-                    $key = $key+1;       
-                }
-                elseif($value=="I")
-                {
-                    $total += $num[$value];
-                }elseif($key+1=="I" || $key+1=="V")
-                {
-                    $total += $num[$a[$key+1]] - $num[$value];
-                    $key = $key+1;       
-                }
-                else
-                {
-                    $total += $num[$value];
-                };
+            }else{
+                $total += $num[$a[$key]];
             }
         };
         return $total;
     }
 };
 
-$a= new Solution;
-echo $a->romanToInt("IV");
+$a = new Solution;
+echo $a->romanToInt("III") . "<br>";
+echo $a->romanToInt("IV")."<br>";
+echo $a->romanToInt("IX")."<br>";
+echo $a->romanToInt("LVIII")."<br>";
+echo $a->romanToInt("MCMXCIV")."<br>";
