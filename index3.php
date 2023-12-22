@@ -49,32 +49,27 @@ class Solution
         for ($key = 0; $key < $array; $key++) {
             if ($key < $array - 1) {
                 // 要是c的話，就要判斷右邊是不是d或者m，是的話就要減。
-                if ($a[$key] == "C" || $a[$key] == "X" || $a[$key] == "I") 
-                {
-                    if ($a[$key + 1] == "D" || $a[$key + 1] == "M") 
-                    {
+                if ($a[$key] == "C" || $a[$key] == "X" || $a[$key] == "I") {
+                    if ($a[$key + 1] == "D" || $a[$key + 1] == "M" && $a[$key] != "D" && $a[$key] != "M") {
                         $total += $num[$a[$key + 1]] - $num[$a[$key]];
                         $key = $key + 1;
-                    } elseif ($a[$key + 1] == "L" || $a[$key + 1] == "C") 
-                    {
+                        echo "我近來扣了" . $num[$a[$key]] . "<br>";
+                    } elseif ($a[$key + 1] == "L" || $a[$key + 1] == "C" && $a[$key] != "D" && $a[$key + 1] != "M" && $a[$key] != "C") {
                         $total += $num[$a[$key + 1]] - $num[$a[$key]];
                         $key = $key + 1;
-                    } elseif ($a[$key + 1] == "V" || $a[$key + 1] == "X") 
-                    {
+                        echo "我近來扣了" . $num[$a[$key]] . "<br>";
+                    } elseif ($a[$key + 1] == "V" || $a[$key + 1] == "X" && $a[$key] != "C" && $a[$key] != "L" && $a[$key] != "X") {
                         $total += $num[$a[$key + 1]] - $num[$a[$key]];
                         $key = $key + 1;
-                    } else 
-                    {
+                        echo "我近來扣了" . $num[$a[$key]] . "<br>";
+                    } else {
                         $total += $num[$a[$key]];
-                        echo "1.進來了<br>".$total."<br>";
                     }
                 } else {
                     $total += $num[$a[$key]];
-                    echo "2.進來了<br>".$total."<br>";
                 }
-            }else{
+            } else {
                 $total += $num[$a[$key]];
-                echo "3.進來了<br>".$total."<br>";
             }
         };
         return $total;
@@ -83,8 +78,9 @@ class Solution
 
 $a = new Solution;
 // echo $a->romanToInt("III") . "<br>";
-// echo $a->romanToInt("IV")."<br>";
-// echo $a->romanToInt("IX")."<br>";
-// echo $a->romanToInt("LVIII")."<br>";
-// echo $a->romanToInt("MCMXCIV")."<br>";
-echo $a->romanToInt("DCXXI")."<br>";
+// echo $a->romanToInt("IV") . "<br>";
+// echo $a->romanToInt("IX") . "<br>";
+// echo $a->romanToInt("LVIII") . "<br>";
+// echo $a->romanToInt("MCMXCIV") . "<br>";
+// echo $a->romanToInt("DCXXI") . "<br>";
+echo $a->romanToInt("MDCCCLXXXIV") . "<br>";
