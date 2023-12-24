@@ -20,17 +20,72 @@
  * 4.如果相同就繼續比對下一個字母。
  * 5.如果不相同就回傳空字串。
  */
-class Solution {
+/**
+ * 思考邏輯，要先將例外狀況先排除，不然會出現錯誤。
+ * 哪邊會死要先想出來這樣才可以避免走進死胡同。
+ * 
+ */
+class Solution
+{
 
     /**
      * @param String[] $strs
      * @return String
      */
-    function longestCommonPrefix($strs) {
+    function longestCommonPrefix($strs)
+    {
         /**
          * 會用到的工具
          * 陣列有多少數值 count()
          * 
          */
+        if($strs[0] === ""){
+            return "";
+        }elseif(count($strs) == 1){
+            return $strs[0];
+        }
+        // 陣列長度。
+        $count = count($strs);
+        // 第一個單字長度。
+        $allstr = "";
+        $ansstr="";
+        // 這個要宣告在外面，不然每次for迴圈重跑，都會被重製。 
+        $strnum = mb_strlen($strs[0]);
+        for ($j = 0; $j < $strnum; $j++) {
+            // 第一個單字的第一個字母。
+            $strs[0][$j];
+            // 要先先宣告他為字串，才能夠使用。
+            $allstr .= $strs[0][$j];
+            // 將字串一個一個加進去，信行比對。
+            $ans = 0;
+            for ($i = 0; $i < $count; $i++) {
+                if (substr($strs[$i], 0, $j + 1) != $allstr) {
+                    // 如果不相同就回傳空字串。
+                    if ($ans == 0) {
+                        return "";
+                    } elseif ($ans > 0) {
+                        return $ansstr;
+                    }
+                } else {
+                    // 如果相同就繼續比對下一個字母。
+                    $ans++;
+                }
+                if($ans == $count){
+                     $ansstr=$allstr;
+                }
+            }
+        }
+        return $ansstr;
     }
 }
+
+$srtr8 = ["flower","flower","flower","flower"];
+$test = new Solution();
+echo $test->longestCommonPrefix($srtr8);
+echo "<br>";
+
+/**
+ * 自己的解題思路過了但效率超低，以下是大師作法。
+ */
+
+
