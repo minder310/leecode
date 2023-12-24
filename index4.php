@@ -27,6 +27,10 @@ class Solution {
      * @return String
      */
     function longestCommonPrefix($strs) {
-        
+        /**
+         * 會用到的工具
+         * 陣列有多少數值 count()
+         * 
+         */
     }
 }
