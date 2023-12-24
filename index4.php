@@ -84,8 +84,31 @@ $test = new Solution();
 echo $test->longestCommonPrefix($srtr8);
 echo "<br>";
 
-/**
- * 自己的解題思路過了但效率超低，以下是大師作法。
- */
+//  自己的解題思路過了但效率超低，以下是大師作法。 
+// class Solution {
+//     function longestCommonPrefix($strs) {
+//         $public = '';
+//         if(count($strs)==1)
+//         return array_pop($strs);
+//         $one = array_pop($strs);
+//         for($i=0;$i<strlen($one);$i++){
+//             foreach($strs as $item){
+//                 if($item[$i]<>$one[$i]){
+
+//                     return $public;
+//                 }
+//             }
+
+            
+//             $public .= $one[$i];
+//         }
+//         return $public;
+//     }
+// }
+
+// 作者：崔雪峰
+// 链接：https://leetcode.cn/problems/longest-common-prefix/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
