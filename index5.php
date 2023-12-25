@@ -40,7 +40,9 @@ class Solution
     {
         if (strlen($s) % 2 != 0) {
             return false;
-        }elseif
+        }
+        // 辨別括號位置是否正確。
+        // 只要位置1,3,5,7，或是2,4,6,8
             $s = str_replace("(","", $s);
             $s = str_replace(")","",$s);
             if (strlen($s) % 2 != 0) {
