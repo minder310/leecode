@@ -79,7 +79,7 @@ class Solution
     }
 }
 
-$srtr8 = ["flower","flower","flower","flower"];
+$srtr8 = ["a","a","b"];
 $test = new Solution();
 echo $test->longestCommonPrefix($srtr8);
 echo "<br>";
@@ -88,20 +88,28 @@ echo "<br>";
 // class Solution {
 //     function longestCommonPrefix($strs) {
 //         $public = '';
+//         $public為空字串，用來存放公共字串。
 //         if(count($strs)==1)
+//          {
+//         要是陣列只有一個字串，就直接回傳該字串。
 //         return array_pop($strs);
+//         回傳被刪掉的字串。array_pop()會刪掉最後一個字串。而return會回傳被刪掉的字串。
+//          };
 //         $one = array_pop($strs);
+//         取最後一個字串，為對比的基準。
 //         for($i=0;$i<strlen($one);$i++){
+//             用for迴圈來跑，小於最後一個字串的長度。
 //             foreach($strs as $item){
-//                 if($item[$i]<>$one[$i]){
-
+//                 if($item[$i]!=$one[$i]){
+//                     如果發現有不相同的字母，就回傳公共字串。
 //                     return $public;
 //                 }
 //             }
 
-            
+//             如果沒有發現不相同的字母，就將字母加進公共字串。
 //             $public .= $one[$i];
 //         }
+//        如果都沒有發現不相同的字母，就回傳公共字串。(這裡是完全成功的時候回傳)
 //         return $public;
 //     }
 // }
