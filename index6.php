@@ -20,7 +20,37 @@ class Solution {
      * @return ListNode
      * 簡單來說就是將兩個陣列合併，並且排序。
      */
+    function preall($alllist){
+        print_r("<pre>");
+        print_r($alllist);
+        print_r("</pre>");
+    }
+
     function mergeTwoLists($list1, $list2) {
-        
+        $num=[
+            0=>$list1,
+            1=>$list2
+        ];
+        $alllist=[];
+        for($i=0;$i<2;$i++){
+            foreach($num[$i] as $key=>$value){
+                array_push($alllist,$value);
+            }
+        }
+        $this->preall($alllist);
+        foreach($alllist as $key=>$value){
+            echo $key;
+            if($value>$alllist[$key+1]){
+                echo "我有近來唷";
+                $temp=$alllist[$key+1];
+                $alllist[$key+1]=$value;
+                $alllist[$key]=$temp;
+                $key=0;
+            }
+        }
+        return $alllist;
     }
 }
+$test=new Solution();
+print_r( $test->mergeTwoLists([1,2,4],[1,3,4]))."<br>";
+// print_r($test->mergeTwoLists([],[0]))."<br>";
