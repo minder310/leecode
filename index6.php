@@ -53,10 +53,27 @@ class Solution
         $ans = new ListNode();
         // 宣告一個新的節點，並且將值設為空。
         $cur = $ans;
-        while($list1!==null && $list2!==null){
-            if($list1->val <= $list2->val){
-                
+        
+        while ($list1 !== null && $list2 !== null) {
+        if ($list1->val <= $list2->val) {
+            $cur->next = $list1;
+            $list1 = $list1->next;
+            // 這是將$list1，移動到下一個節點，代表這個節點已經被處理了。
+        } else {
+            $cur->next = $list2;
+            $list2 = $list2->next;
+            // 這是將$list2，移動到下一個節點，代表這個節點已經被處理了。
         }
+        $cur = $cur->next;
+    }
+
+    if ($list1 !== null) {
+        $cur->next = $list1;
+    } elseif ($list2 !== null) {
+        $cur->next = $list2;
+    }
+
+    return $ans->next;
 
         // 宣告一個新的空節點，拿來存放最後的結果。
         // while($list1!==null && $list2!==null){
@@ -107,7 +124,8 @@ class Solution
 $lst1=new ListNode(1,new ListNode(2,new ListNode(4,null)));
 $lst2=new ListNode(1,new ListNode(3,new ListNode(4,null)));
 $test=new Solution();
-$test->mergeTwoLists($lst1,$lst2);
+$a=$test->mergeTwoLists($lst1,$lst2);
+$a->output();
 
 //  以下為網路上的解題方式。
 // function mergeTwoLists($l1, $l2)
@@ -119,9 +137,11 @@ $test->mergeTwoLists($lst1,$lst2);
     // while ($l1 !== null && $l2 !== null) {
     // 啟動條件，當兩個陣列都不為空時，執行以下程式碼。
         // if ($l1->val <= $l2->val) {
-        // 
+        // 當$list1->val小於等於$list2->val時，執行以下程式碼。
             // $cur->next = $l1;
+            // 將$cur->next的值設為$l1。$cur->val = null，$cur->next = $l1。
             // $l1 = $l1->next;
+
         // } else {
             // $cur->next = $l2;
             // $l2 = $l2->next;
