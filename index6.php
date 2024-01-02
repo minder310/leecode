@@ -49,8 +49,14 @@ class Solution
     
     function mergeTwoLists($list1, $list2)
     {
-        
-
+        // 宣告一個空的class用來存放最終結果。
+        $ans = new ListNode();
+        // 宣告一個新的節點，並且將值設為空。
+        $cur = $ans;
+        while($list1!==null && $list2!==null){
+            if($list1->val <= $list2->val){
+                
+        }
 
         // 宣告一個新的空節點，拿來存放最後的結果。
         // while($list1!==null && $list2!==null){
@@ -101,39 +107,38 @@ class Solution
 $lst1=new ListNode(1,new ListNode(2,new ListNode(4,null)));
 $lst2=new ListNode(1,new ListNode(3,new ListNode(4,null)));
 $test=new Solution();
-$test->mergeTwoLists($lst1,$lst2)
-/**
- * 以下為網路上的解題方式。
- * function mergeTwoLists($l1, $l2)
-*{
-*   $dummyHead = new ListNode(null);
-*   宣告一個新的節點，並且將值設為空。
-*  $cur = $dummyHead;
-*  宣告一個新的節點，並且將值設為空。
-*    while ($l1 !== null && $l2 !== null) {
-*    啟動條件，當兩個陣列都不為空時，執行以下程式碼。
-*        if ($l1->val <= $l2->val) {
-*        
-*            $cur->next = $l1;
-*            $l1 = $l1->next;
-*        } else {
-*            $cur->next = $l2;
-*            $l2 = $l2->next;
-*        }
-*        $cur = $cur->next;
-*    }
-*
-*    if ($l1 !== null) {
-*        $cur->next = $l1;
-*    } elseif ($l2 !== null) {
-*        $cur->next = $l2;
-*    }
-*
-*    return $dummyHead->next;
-*}
-*
-*作者：Zou Zhipeng
-*链接：https://leetcode.cn/problems/merge-two-sorted-lists/solutions/88656/php-jie-fa-by-zzpwestlife-19/
-*来源：力扣（LeetCode）
-*著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
- */
+$test->mergeTwoLists($lst1,$lst2);
+
+//  以下為網路上的解題方式。
+// function mergeTwoLists($l1, $l2)
+// 
+//    $dummyHead = new ListNode(null);
+//    宣告一個新的節點，並且將值設為空。
+//   $cur = $dummyHead;
+//   宣告一個新的節點，並且將值設為空。
+    // while ($l1 !== null && $l2 !== null) {
+    // 啟動條件，當兩個陣列都不為空時，執行以下程式碼。
+        // if ($l1->val <= $l2->val) {
+        // 
+            // $cur->next = $l1;
+            // $l1 = $l1->next;
+        // } else {
+            // $cur->next = $l2;
+            // $l2 = $l2->next;
+        // }
+        // $cur = $cur->next;
+    // }
+// 
+    // if ($l1 !== null) {
+        // $cur->next = $l1;
+    // } elseif ($l2 !== null) {
+        // $cur->next = $l2;
+    // }
+// 
+    // return $dummyHead->next;
+// }
+// 
+// 作者：Zou Zhipeng
+// 链接：https://leetcode.cn/problems/merge-two-sorted-lists/solutions/88656/php-jie-fa-by-zzpwestlife-19/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
