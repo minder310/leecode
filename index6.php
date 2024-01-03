@@ -49,30 +49,33 @@ class Solution
     
     function mergeTwoLists($list1, $list2)
     {
-        // 宣告一個空的class用來存放最終結果。
+        // 宣告一個虛擬節點，讓他的值為空。以利後續的使用。
         $ans = new ListNode();
-        // 宣告一個新的節點，並且將值設為空。
+        // 宣告一個新的節點，並且將值設為空。讓數值可以被儲存。
         $cur = $ans;
         
         while ($list1 !== null && $list2 !== null) {
         if ($list1->val <= $list2->val) {
             $cur->next = $list1;
+            // 如果$list1->val小於等於$list2->val時，將$cur->next的值設為$list1。
             $list1 = $list1->next;
             // 這是將$list1，移動到下一個節點，代表這個節點已經被處理了。
         } else {
             $cur->next = $list2;
+            // 如果$list1->val大於$list2->val時，將$cur->next的值設為$list2。
             $list2 = $list2->next;
             // 這是將$list2，移動到下一個節點，代表這個節點已經被處理了。
         }
+        // 這是將$cur，移動到下一個節點，代表這個節點已經被處理了。
         $cur = $cur->next;
     }
-
+    // 這邊確定$list1和$list2，其中一個已經為空了，所以只要將剩下的陣列，接到$cur->next即可。
     if ($list1 !== null) {
         $cur->next = $list1;
     } elseif ($list2 !== null) {
         $cur->next = $list2;
     }
-
+    // 這邊回傳$ans->next，是因為$ans是一個虛擬節點，所以要回傳$ans->next。
     return $ans->next;
 
         // 宣告一個新的空節點，拿來存放最後的結果。
