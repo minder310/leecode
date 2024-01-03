@@ -14,7 +14,7 @@
 // }
 // 如果所有断言都通过，那么您的题解将被 通过。
 
- 
+
 
 // 示例 1：
 
@@ -26,25 +26,35 @@
 // 输入：nums = [0,0,1,1,1,2,2,3,3,4]
 // 输出：5, nums = [0,1,2,3,4]
 // 解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
- 
+
 
 // 提示：
 
 // 1 <= nums.length <= 3 * 104
 // -104 <= nums[i] <= 104
 // nums 已按 非严格递增 排列
-class Solution {
+class Solution
+{
 
     /**
      * @param Integer[] $nums
      * @return Integer
      */
-    function removeDuplicates(&$nums) {
-
+    function removeDuplicates(&$nums)
+    {
+        // &表示引用传递，不加&表示值传递
+        // 宣告兩個變數，一個是原陣列的長度，一個是新陣列的長度
+        $lastVal = null;
+        // 儲存數值用，用於比對是否重複。
+        // 用foreach遍歷陣列
+        foreach ($nums as $k => $v) {
+            if($v===$lastVal){
+                // 如果值重複，就刪掉這個值。
+                unset($nums[$k]);
+            }
+            $lastVal = $v;
+            // 將值存起來，用於下次比對。
+        }
+        return count($nums);
     }
 };
-$nums=[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
-$test=array_flip($nums);
-print_r($test)."<br>";
-array_keys($test);
-print_r($test);
