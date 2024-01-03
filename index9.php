@@ -12,3 +12,17 @@
 // 提示：
 // 1 <= haystack.length, needle.length <= 104
 // haystack 和 needle 仅由小写英文字符组成
+class Solution {
+
+    /**
+     * @param String $haystack
+     * @param String $needle
+     * @return Integer
+     */
+    function strStr($haystack, $needle) {
+        // 可能會用到的函數。
+        // strpos — 查找字符串首次出现的位置
+        // strstr — 查找字符串的首次出现
+        strpos($haystack, $needle);
+    }
+}
