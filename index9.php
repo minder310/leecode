@@ -18,11 +18,53 @@ class Solution {
      * @param String $haystack
      * @param String $needle
      * @return Integer
+     * 解題，返回第一次匹配的位置。
+     * 有兩種解法，一種是用php的函數，一種是自己寫。
+     * php函數的話，就是用strpos，要是沒有找到就返回false。
+     * strpos(整個字串,要找的文字是那些。) — 查找字符串首次出现的位置
      */
     function strStr($haystack, $needle) {
-        // 可能會用到的函數。
-        // strpos — 查找字符串首次出现的位置
-        // strstr — 查找字符串的首次出现
-        strpos($haystack, $needle);
+        // 這邊適用函數寫。
+        // // 可能會用到的函數。
+        // // strpos — 查找字符串首次出现的位置
+        // $firstnum=strpos($haystack, $needle);
+        // // 要是沒有找到就返回-1
+        // if($firstnum===false){
+        //     return -1;
+        // }else{
+        //     return $firstnum;
+        // };
+        
+        // 以下是自己的寫法。
+        // 確定邊界，如果近來的資料有兩項其中一項是空的，就返回0。
+        if($haystack==""||$needle==""){
+            return 0;
+        }
+        $needelnum=strlen($needle)."<br>";
+        //宣告一個判斷字母長度。
+        $ans=0;
+
+        // 循環判斷字母。
+        for($i=0;$i<strlen($haystack);$i++){
+            // 如果字母相同，就把判斷字母長度+1。
+            if($haystack[$i]===$needle[$i]){
+                $ans++;
+                echo $ans."<br>";
+                if($ans+1===strlen($needle)){
+                    return ($i+1)-strlen($needle);
+                }
+            }else{
+                // 如果字母不同，就把判斷字母長度歸0。
+                $ans=0;
+            }
+            
+        }
+         
+        
     }
 }
+$test=new Solution();
+$haystack = "sadbutsad";
+$needle = "sad";
+// 顯示第一個匹配的位置。
+echo $test->strStr($haystack, $needle);

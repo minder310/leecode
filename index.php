@@ -14,5 +14,6 @@
     <a href="index6.php">第六題</a><br>
     <a href="index7.php">第七題</a><br>
     <a href="index8.php">第八題</a><br>
+    <a href="index9.php">第九題</a><br>
 </body>
 </html>
