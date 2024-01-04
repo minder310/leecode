@@ -40,25 +40,26 @@ class Solution {
         if($haystack==""||$needle==""){
             return 0;
         }
-        $needelnum=strlen($needle)."<br>";
         //宣告一個判斷字母長度。
         $ans=0;
-
+        $b=0;
         // 循環判斷字母。
         for($i=0;$i<strlen($haystack);$i++){
             // 如果字母相同，就把判斷字母長度+1。
-            if($haystack[$i]===$needle[$i]){
+            if($haystack[$i]===$needle[$b]){
                 $ans++;
-                echo $ans."<br>";
-                if($ans+1===strlen($needle)){
-                    return ($i+1)-strlen($needle);
+                $b++;
+                if($ans===strlen($needle)){
+                    return ($i+1)-($ans);
                 }
             }else{
                 // 如果字母不同，就把判斷字母長度歸0。
                 $ans=0;
+                $b=0;
             }
             
         }
+        return -1;
          
         
     }
