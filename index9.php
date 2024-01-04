@@ -12,7 +12,8 @@
 // 提示：
 // 1 <= haystack.length, needle.length <= 104
 // haystack 和 needle 仅由小写英文字符组成
-class Solution {
+class Solution
+{
 
     /**
      * @param String $haystack
@@ -23,7 +24,8 @@ class Solution {
      * php函數的話，就是用strpos，要是沒有找到就返回false。
      * strpos(整個字串,要找的文字是那些。) — 查找字符串首次出现的位置
      */
-    function strStr($haystack, $needle) {
+    function strStr($haystack, $needle)
+    {
         // 這邊適用函數寫。
         // // 可能會用到的函數。
         // // strpos — 查找字符串首次出现的位置
@@ -34,38 +36,42 @@ class Solution {
         // }else{
         //     return $firstnum;
         // };
-        
+
         // 以下是自己的寫法。
         // 確定邊界，如果近來的資料有兩項其中一項是空的，就返回0。
-        if($haystack==""||$needle==""){
+        if ($haystack == "" || $needle == "") {
             return 0;
         }
         //宣告一個判斷字母長度。
-        $ans=0;
-        $b=0;
+        $ans = 0;
+        $b = 0;
         // 循環判斷字母。
-        for($i=0;$i<strlen($haystack);$i++){
+        for ($i = 0; $i < strlen($haystack); $i++) {
             // 如果字母相同，就把判斷字母長度+1。
-            if($haystack[$i]===$needle[$b]){
+            if ($haystack[$i] === $needle[$b]) {
                 $ans++;
                 $b++;
-                if($ans===strlen($needle)){
-                    return ($i+1)-($ans);
+                if ($ans === strlen($needle)) {
+                    return ($i + 1) - ($ans);
                 }
-            }else{
+            } else {
                 // 如果字母不同，就把判斷字母長度歸0。
-                $ans=0;
-                $b=0;
+                $ans = 0;
+                $b = 0;
+                if ($i > 0) {
+                    if ($haystack[$i - 1] === $needle[$b]) {
+                        $i = $i - 1;
+                        $ans++;
+                        $b++;
+                    }
+                }
             }
-            
         }
         return -1;
-         
-        
     }
 }
-$test=new Solution();
-$haystack = "sadbutsad";
-$needle = "sad";
+$test = new Solution();
+$haystack = "mississippi";
+$needle = "issip";
 // 顯示第一個匹配的位置。
 echo $test->strStr($haystack, $needle);
