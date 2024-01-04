@@ -63,6 +63,7 @@ class Solution
                         $i = $i - 1;
                         $ans++;
                         $b++;
+                        echo $i."<br>";
                     }
                 }
             }
@@ -72,6 +73,6 @@ class Solution
 }
 $test = new Solution();
 $haystack = "mississippi";
-$needle = "issip";
+$needle = "pi";
 // 顯示第一個匹配的位置。
 echo $test->strStr($haystack, $needle);
