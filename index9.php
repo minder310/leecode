@@ -69,6 +69,39 @@ class Solution
             }
         }
         return -1;
+// 別人解題的方式。
+//         if(!$needle){
+    // 要沒有需要確認的自母，就返回0。
+//     return 0;
+// }
+// $fast = 0;
+// $slow = 0;
+// $n = strlen($needle);
+// 自母的長度。
+// $h = strlen($haystack);
+// 整個字串的長度，已確定邊界。
+
+// while($slow<$n && $fast<$h){
+    // 確認循環邊界，
+//     if($haystack[$fast]!=$needle[$slow]){
+//         $fast = $fast-$slow;
+//         $slow = 0;
+//     }else{
+//         $slow++;
+//     }
+//     $fast++;
+// }
+// if($slow==$n){
+//     return $fast-$slow;
+// }else{
+//     return -1;
+// }
+// }
+
+// 作者：栩栩如生
+// 链接：https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/solutions/834111/28phpti-jie-by-hikoming-c9v1/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
     }
 }
 $test = new Solution();
