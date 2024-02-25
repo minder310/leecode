@@ -55,6 +55,7 @@ class Solution
         $cur = $ans;
         
         while ($list1 !== null && $list2 !== null) {
+            // 當兩個陣列都不為空時，執行以下程式碼。
         if ($list1->val <= $list2->val) {
             $cur->next = $list1;
             // 如果$list1->val小於等於$list2->val時，將$cur->next的值設為$list1。
