@@ -43,27 +43,24 @@ class Solution
             return 0;
         }
         //宣告一個判斷字母長度。
+        $howlong = strlen($needle);
         $ans = 0;
         $b = 0;
         // 循環判斷字母。
         for ($i = 0; $i < strlen($haystack); $i++) {
-            // 如果字母相同，就把判斷字母長度+1。
-            if ($haystack[$i] === $needle[$b]) {
-                $ans++;
-                $b++;
-                if ($ans === strlen($needle)) {
-                    return ($i + 1) - ($ans);
-                }
-            } else {
-                // 如果字母不同，就把判斷字母長度歸0。
-                $ans = 0;
-                $b = 0;
-                if ($i > 0) {
-                    if ($haystack[$i - 1] === $needle[$b]) {
-                        $i = $i - 1;
-                        $ans++;
-                        $b++;
-                        echo $i."<br>";
+            // strlen($haystack)是整個字串的長度。
+            // howlong是自母的長度。
+            if($haystack[$i]=== $needle[$b]){
+                // 當兩個字母相等時，就將b+1。
+                for($j = 0; $j < $howlong; $j++){
+                    // 循環判斷字母。
+                    if($haystack[$i+$j]!==$needle[$j]){
+                        // 要是有一個字母不相等，就跳出循環。
+                        break;
+                    }
+                    if($j === $howlong-1){
+                        // 要是j等於howlong-1，就返回i。
+                        return $i;
                     }
                 }
             }
@@ -103,6 +100,7 @@ class Solution
 // 来源：力扣（LeetCode）
 // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
     }
+
 }
 $test = new Solution();
 $haystack = "mississippi";
