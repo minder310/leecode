@@ -36,15 +36,19 @@ class Solution {
             if($nums[$i]==$target){
                 // count()函式用來計算陣列的長度
                 return $i;
-            }
-        }
-        for($i=0;$i<count($nums);$i++){
-            if($nums[$i]>$target){
+            }elseif($nums[$i]>$target){
                 return $i;
             }else if($i==count($nums)-1 && $nums[$i]<$target){
                 return $i+1;
             }
         }
+        /**for($i=0;$i<count($nums);$i++){
+            if($nums[$i]>$target){
+                return $i;
+            }else if($i==count($nums)-1 && $nums[$i]<$target){
+                return $i+1;
+            }
+        }*/
     }
 }
 $a=new Solution();
