@@ -23,7 +23,36 @@ class Solution {
         // -----------------方法二-------------------
         if ($x == 0) {
             return 0;
+        }elseif($x==1){
+            return 1;
         }
+        // 二分法
+        // 二分法是一种在有序数组中查找某一特定元素的搜索算法。
+        // 搜索过程从数组的中间元素开始，如果中间元素正好是要查找的元素，则搜索过程结束；
+        // 如果某一特定元素大于或者小于中间元素，则在数组大于或小于中间元素的那一半中查找，而且跟开始一样从中间元素开始比较。
+        // 如果在某一步骤数组为空，则代表找不到。
+        // 这种搜索算法每一次比较都使搜索范围缩小一半。
+        // 
+        $g=1;
+        $left = 1;
+        $right = $x;
+        while ($left <= $right) {
+            echo "g:".$g++."<br>";
+            echo "left:".$left." right:".$right."<br>";
+            $mid = $left + floor(($right - $left) / 2);
+            echo "mid:".$mid."<br>";
+            // floor() 函数向下舍入为最接近的整数。
+            $sqrt = $mid * $mid;
+            if ($sqrt == $x) {
+                return $mid;
+            } elseif ($sqrt > $x) {
+                $right = $mid - 1;
+            } else {
+                $left = $mid + 1;
+            }
+            echo "底left:".$left."底right:".$right."<br>";
+        }
+        return $right;
         
         
         
@@ -40,5 +69,5 @@ class Solution {
     }
 }
 $solution = new Solution();
-echo $solution->mySqrt(4); //2
-echo $solution->mySqrt(8); //2
+//  echo $solution->mySqrt(4); //2
+ echo $solution->mySqrt(8); //2
