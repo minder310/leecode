@@ -34,12 +34,19 @@ class Solution {
         // 这种搜索算法每一次比较都使搜索范围缩小一半。
         // 
         $g=1;
+        // 第幾次
         $left = 1;
+        // 左邊的數，就是計算起始值。
         $right = $x;
+        // 右邊的數，就是計算結束值。
         while ($left <= $right) {
             echo "g:".$g++."<br>";
             echo "left:".$left." right:".$right."<br>";
             $mid = $left + floor(($right - $left) / 2);
+            // $left + floor(($right - $left) / 2) 
+            // $left=變動最小值
+            // $right=變動最大值
+            // $left+-等於，最大值變小，最小值變大。因為這個值已經用過，所以+-1。
             echo "mid:".$mid."<br>";
             // floor() 函数向下舍入为最接近的整数。
             $sqrt = $mid * $mid;
