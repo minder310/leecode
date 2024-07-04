@@ -34,6 +34,18 @@ class Solution {
      * @return ListNode
      */
     function deleteDuplicates($head) {
-
+        $InClassNum=$head;
+        if($InClassNum!=null && $InClassNum->next!=null)
+        {
+            if($InClassNum->val==$InClassNum->next->val)
+            {
+                $InClassNum->next=$InClassNum->next->next;
+                $this->deleteDuplicates($InClassNum);
+            }
+            else
+            {
+                $this->deleteDuplicates($InClassNum->next);
+            }
+        }
     }
 }
