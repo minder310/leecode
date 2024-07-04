@@ -47,5 +47,15 @@ class Solution {
                 $this->deleteDuplicates($InClassNum->next);
             }
         }
+        print_r($InClassNum);
+        return $InClassNum;
     }
 }
+// $head = [1,1,2]
+$head = new ListNode(1);
+$head->next = new ListNode(1);
+$head->next->next = new ListNode(2);
+$Solution = new Solution;
+$Solution->deleteDuplicates($head);
+
+
