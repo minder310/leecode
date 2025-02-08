@@ -41,10 +41,53 @@ class Solution
      */
     function merge(&$nums1, $m, $nums2, $n)
     {
-        $newnumber = array();
+        // 先宣告一個新的陣列，用來記錄兩個陣列合併後的數值。
+        $newnumber1 = array();
+        $newnumber2 = array();
+        // 以下是兩個陣列的資料清洗。
+        for ($i = 0; $i < $m; $i++) {
+            if ($nums1[$i] != 0) {
+                $newnumber1[] = $nums1[$i];
+            }
+        }
+        if(count($newnumber1)==$m){
+            echo "newnumber1:驗證通過<br>";
+        }
+        for ($i = 0; $i < $n; $i++) {
+            if ($nums2[$i] != 0) {
+                $newnumber2[] = $nums2[$i];
+            }
+        }
+        if(count($newnumber2)==$n){
+            echo "newnumber2:驗證通過<br>";
+        }
+        // 測輸出用。
+        echo "newnumber1:";
+        // print_r() 函數用於打印變數的易讀信息。
+        print_r($newnumber1);
+        echo "<br>";
+        echo "newnumber2:";
+        // print_r() 函數用於打印變數的易讀信息。
+        print_r($newnumber2);
+        echo "<br>";
+        /*
         $newnumber = array_merge($nums1, $nums2);
         echo $newnumber;
         $nums1 = $newnumber;
         return $nums1;
+        */
     }
-}
+    }
+    
+    // Create an instance of the Solution class and call the merge function
+    // 呼叫 Solution 類別的實例，並呼叫 merge 函數。
+    $solution = new Solution();
+    // 測試資料。
+    $nums1 = [1, 2, 3, 0, 0, 0];
+    $m = 3;
+    $nums2 = [2, 5, 6];
+    $n = 3;
+    // 呼叫函數。
+    $solution->merge($nums1, $m, $nums2, $n);
+    
+    ?>
